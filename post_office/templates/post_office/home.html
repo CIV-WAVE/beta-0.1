@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}CIV Post Office{% endblock %}
+
+{% block content %}
+
+<!--user.is_authenticated-->
+{% include "post_office/user_is_authenticated.html" %}
+
+<div>
+    <a href="{% url 'post_office:passport_list' %}">Passport List</a>
+</div>
+
+{% endblock %}

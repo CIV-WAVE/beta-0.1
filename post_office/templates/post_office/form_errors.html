@@ -1,0 +1,43 @@
+<!--Form Errors-->
+{% if form.errors %}
+
+    <!--
+    [field.errors]
+    - Missing values
+    - Wrong formats
+    -->
+    {% for field in form %}
+        {% for error in field.errors %}
+            {% if field.label == "Username" %}
+                <div class="alert alert-danger">
+                    Please fill out the [Name] field.
+                </div>
+            {% endif %}
+            {% if field.label == "Password" %}
+                <div class="alert alert-danger">
+                    Please fill out the [Key] field.
+                </div>
+            {% endif %}
+            {% if field.label == "Password confirmation" %}
+                <div class="alert alert-danger">
+                    Wrong Confirm Key.
+                </div>
+            {% endif %}
+            {% if field.label == "email" %}
+                <div class="alert alert-danger">
+                    Please fill out the [Email] field.
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+    <!--
+    [form.non_field_errors]
+    - Other issues
+    -->
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}

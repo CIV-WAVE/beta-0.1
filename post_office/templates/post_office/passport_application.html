@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Passport Application{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form method="post" class="post-form" action="{% url 'post_office:passport_application' %}">
+        {% csrf_token %}
+        {% include "post_office/form_errors.html" %}
+
+        <!--name-->
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text"
+                   class="form-control"
+                   name="username"
+                   id="name"
+                   value="{{ form.username.value|default_if_none:'' }}">
+        </div>
+
+        <!--key-->
+        <div class="form-group">
+            <label for="key">Key</label>
+            <input type="password"
+                   class="form-control"
+                   name="password1"
+                   id="key"
+                   value="{{ form.password1.value|default_if_none:'' }}">
+        </div>
+
+        <!--confirm key-->
+        <div class="form-group">
+            <label for="confirm_key">Confirm Key</label>
+            <input type="password"
+                   class="form-control"
+                   name="password2"
+                   id="confirm_key"
+                   value="{{ form.password2.value|default_if_none:'' }}">
+        </div>
+
+        <!--email-->
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text"
+                   class="form-control"
+                   name="email"
+                   id="email"
+                   value="{{ form.email.value|default_if_none:'' }}">
+        </div>
+
+        <!--sumbit button-->
+        <button type="submit" class="btn btn-primary">Create Passport</button>
+    </form>
+</div>
+<a href="{% url 'post_office:home' %}">home</a>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% if user.is_authenticated %}
+<div>
+    Welcome, {{ user.username }}!
+    <a href="{% url 'post_office:departure' %}">Departure</a>
+</div>
+{% else %}
+<div>
+    <a href="{% url 'post_office:passport_application' %}">Passport Application</a>
+</div>
+{% endif %}

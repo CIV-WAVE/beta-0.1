@@ -1,0 +1,10 @@
+{% if user.is_authenticated %}
+<div>
+    Welcome, {{ user.username }}!
+    <a href="{% url 'airport:departure' %}">Departure</a>
+</div>
+{% else %}
+<div>
+    <a href="{% url 'airport:immigration' %}">Immigration</a>
+</div>
+{% endif %}

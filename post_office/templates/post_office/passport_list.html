@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Passport list{% endblock %}
+
+{% block content %}
+
+<!--user.is_authenticated-->
+{% include "post_office/user_is_authenticated.html" %}
+
+<h2>Passport list</h2>
+<div>Here is the list of registered passports</div>
+    {% for passport in passports %}
+        <div>
+            <a href="{% url 'passport_detail' passport.code %}">
+                {{ passport.name }}
+            </a>
+        </div>
+    {% endfor %}
+{% endblock %}

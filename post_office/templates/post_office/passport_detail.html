@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}{{ passport.name }}{% endblock %}
+
+{% block content %}
+
+<!--user.is_authenticated-->
+{% include "post_office/user_is_authenticated.html" %}
+
+<h2>{{ passport.name }}</h2>
+<div>Born in {{ passport.birthday }}</div>
+<div>Code: {{ passport.code }}</div>
+{% endblock %}

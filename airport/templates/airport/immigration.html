@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Immigration{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form method="post" class="post-form" action="{% url 'airport:immigration' %}">
+        {% csrf_token %}
+        {% include "airport/form_errors.html" %}
+
+        <div class="form-group">
+            <!--name-->
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="username" id="name">
+            <!--key-->
+            <label for="key">Key</label>
+            <input type="password" class="form-control" name="password" id="key">
+        </div>
+        <!--sumbit button-->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<a href="{% url 'airport:home' %}">home</a>
+{% endblock %}

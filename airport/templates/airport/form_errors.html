@@ -1,0 +1,37 @@
+<!--Form Errors-->
+{% if form.errors %}
+
+    <!--
+    [field.errors]
+    - Missing values
+    - Wrong formats
+    -->
+    {% for field in form %}
+        {% for error in field.errors %}
+            {% if field.label == "Username" %}
+                <div class="alert alert-danger">
+                    Please fill out the [Name] field.
+                </div>
+            {% endif %}
+            {% if field.label == "Password" %}
+                <div class="alert alert-danger">
+                    Please fill out the [Key] field.
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+    <!--
+    [form.non_field_errors]
+    - Other issues
+    -->
+    {% for error in form.non_field_errors %}
+        {% if error == "Please enter a correct username and password. Note that both fields may be case-sensitive." %}
+        <div class="alert alert-danger">
+            No user info.
+        </div>
+        <a href="{% url 'post_office:passport_application' %}">No Passport?</a>
+        {% endif %}
+    {% endfor %}
+
+{% endif %}
