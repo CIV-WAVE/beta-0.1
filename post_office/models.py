@@ -21,9 +21,9 @@ def generate_passport_code():
 
 
 class Passport(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, editable=False)
 
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100, unique=True, editable=False)
     birthday = models.DateTimeField(auto_now_add=True)
     code = models.CharField(max_length=code_length, default=generate_passport_code, editable=False)
     key = models.CharField(max_length=100, editable=False)

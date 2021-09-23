@@ -7,12 +7,11 @@
 {% include "post_office/user_is_authenticated.html" %}
 
 <h2>Passports</h2>
-<div>Here is the list of registered passports</div>
-    {% for passport in passports %}
-        <div>
-            <a href="{% url 'post_office:passport_detail' passport.code %}">
-                {{ passport.name }}
-            </a>
-        </div>
-    {% endfor %}
+{% for passport in passports %}
+<div>
+    <a href="{% url 'post_office:passport_detail' passport.code %}">
+        {{ passport.name }}
+    </a>
+</div>
+{% endfor %}
 {% endblock %}
