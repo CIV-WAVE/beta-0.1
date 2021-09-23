@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django_extensions.db.fields import AutoSlugField
 from django.urls import reverse
 import random
@@ -20,10 +21,12 @@ def generate_passport_code():
 
 
 class Passport(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+
     name = models.CharField(max_length=100, unique=True)
     birthday = models.DateTimeField(auto_now_add=True)
     code = models.CharField(max_length=code_length, default=generate_passport_code, editable=False)
-    key = models.CharField(max_length=100)
+    key = models.CharField(max_length=100, editable=False)
     slug = AutoSlugField(populate_from='code', editable=False)
 
     class Meta:

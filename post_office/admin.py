@@ -5,7 +5,7 @@ from .models import Passport
 
 
 class PassportAdmin(admin.ModelAdmin):
-    list_display = ('name', 'key', 'birthday')
+    list_display = ('name', 'code', 'birthday', 'key',)
 
 
 admin.site.register(Passport, PassportAdmin)

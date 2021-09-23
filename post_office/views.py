@@ -20,6 +20,13 @@ def passport_application(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
 
+            # Create Passport
+            models.Passport.objects.create(
+                user=user,
+                name=user.username,
+                key=user.password,
+            )
+
             login(request, user)
             return redirect('post_office:home')
 
@@ -36,5 +43,5 @@ def passport_list(request):
 
 class PassportDetailView(generic.DetailView):
     model = models.Passport
-    template_name = 'passport_detail.html'
+    template_name = 'post_office/passport_detail.html'
     context_object_name = 'passport'
